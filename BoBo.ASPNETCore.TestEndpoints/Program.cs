@@ -1,3 +1,6 @@
+using BoBo.Fakes;
+using BoBo.Formatting;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -23,5 +26,15 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.Use(async (context, next) =>
+{
+    await new BoBo.ASPNETCore.Middleware.BoBo(
+        next,
+        new JsonFootprint(
+            new DummyException()
+        )
+    ).InvokeAsync(context);
+});
 
 app.Run();

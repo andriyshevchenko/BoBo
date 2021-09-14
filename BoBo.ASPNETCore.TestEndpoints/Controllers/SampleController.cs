@@ -1,5 +1,4 @@
-﻿using BoBo.EndpointFilter;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace BoBo.ASPNETCore.TestEndpoints.Controllers;
 
@@ -8,7 +7,6 @@ namespace BoBo.ASPNETCore.TestEndpoints.Controllers;
 public class SampleController : ControllerBase
 {
     [HttpGet]
-    [JsonFootprint]
     public IEnumerable<object> Get()
     {
         throw new InvalidTimeZoneException("wow");
