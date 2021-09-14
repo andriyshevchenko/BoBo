@@ -5,6 +5,6 @@ namespace BoBo
     public interface IFootprint
     {
         JToken MakeFootprint();
-        IFootprint CopyItself(Exception exception);
+        IFootprint MakeCopy(Exception exception);
     }
 }

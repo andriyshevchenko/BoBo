@@ -24,7 +24,7 @@ public class JsonFootprint : IFootprint
         this.exception = exception;
     }
 
-    public IFootprint CopyItself(Exception exception)
+    public IFootprint MakeCopy(Exception exception)
     {
         return new JsonFootprint(exception);
     }

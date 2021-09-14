@@ -13,7 +13,7 @@ public class JsonDetails : IFootprint
         this.describe = describe;
     }
 
-    public IFootprint CopyItself(Exception exception)
+    public IFootprint MakeCopy(Exception exception)
     {
         return this;
     }
@@ -23,7 +23,7 @@ public class JsonDetails : IFootprint
         JObject root = new()
         {
             { "Footprint", describe
-                .CopyItself(exception)
+                .MakeCopy(exception)
                 .MakeFootprint() },
             { "Message", exception.Message },
         };
@@ -35,7 +35,7 @@ public class JsonDetails : IFootprint
             JObject innerException = new()
             {
                 { "Footprint", describe
-                    .CopyItself(current)
+                    .MakeCopy(current)
                     .MakeFootprint() },
                 { "Message", current.Message }
             };
