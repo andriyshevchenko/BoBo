@@ -4,14 +4,6 @@ using System.Text;
 
 namespace BoBo.Formatting;
 
-public class DetailedFootprint : IFootprint
-{
-    public JToken MakeFootprint()
-    {
-        throw new NotImplementedException();
-    }
-}
-
 /// <summary>
 /// Gets the entire stack trace consisting of exception's footprints (File, Method, LineNumber)
 /// in a basic line-by-line format
@@ -23,6 +15,11 @@ public class BasicFootprint : IFootprint
     public BasicFootprint(Exception exception)
     {
         this.exception = exception;
+    }
+
+    public IFootprint CopyItself(Exception exception)
+    {
+        return new BasicFootprint(exception);
     }
 
     public JToken MakeFootprint()

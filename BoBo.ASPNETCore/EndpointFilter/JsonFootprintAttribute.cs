@@ -5,14 +5,17 @@ using BoBo.Formatting;
 
 namespace BoBo.EndpointFilter
 {
-    public class FormattedFootprintAttribute : ExceptionFilterAttribute
+    public class JsonFootprintAttribute : ExceptionFilterAttribute
     {
         public override void OnException(ExceptionContext context)
         {
             context.Result = 
                 new ContentResult()
                 {
-                    Content = new JsonFootprint(context.Exception).ToString(),
+                    Content = new JsonDetails(
+                        context.Exception,
+                        new JsonFootprint(context.Exception)
+                    ).MakeFootprint().ToString(),
                     ContentType = "application/json",
                     StatusCode = StatusCodes.Status500InternalServerError
                 };

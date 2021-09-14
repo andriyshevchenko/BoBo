@@ -8,7 +8,7 @@ namespace BoBo.ASPNETCore.TestEndpoints.Controllers;
 public class SampleController : ControllerBase
 {
     [HttpGet]
-    [FormattedFootprint]
+    [JsonFootprint]
     public IEnumerable<object> Get()
     {
         throw new InvalidTimeZoneException("wow");

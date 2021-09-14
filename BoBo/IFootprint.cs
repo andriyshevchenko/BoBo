@@ -2,8 +2,9 @@
 
 namespace BoBo
 {
-    interface IFootprint
+    public interface IFootprint
     {
         JToken MakeFootprint();
+        IFootprint CopyItself(Exception exception);
     }
 }

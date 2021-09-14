@@ -1,8 +1,6 @@
-﻿
-using BoBo.Formatting;
+﻿using BoBo.Formatting;
 using Newtonsoft.Json.Linq;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace BoBo.Tests;
 
@@ -11,21 +9,33 @@ public class JsonFootprintTest
     [Fact]
     public void JsonFootprint_ShouldReturnOutput()
     {
-        var footprint = new JsonFootprint(new Exception("not empty"));
+        var exception = new Exception("not empty");
+        var footprint = new JsonDetails(
+            exception,
+            new BasicFootprint(exception)
+        );
         Assert.NotNull(footprint.MakeFootprint().ToString());
     }
     
     [Fact]
     public void JsonFootprint_ShouldNotReturnEmptyString()
     {
-        var footprint = new JsonFootprint(new Exception("not empty"));
+        var exception = new Exception("not empty");
+        var footprint = new JsonDetails(
+            exception,
+            new BasicFootprint(exception)
+        );
         Assert.NotEmpty(footprint.MakeFootprint().ToString());
     }
     
     [Fact]
     public void JsonFootprint_ShouldBeValidJSON_NoInnerException()
     {
-        var footprint = new JsonFootprint(new Exception("not empty"));
+        var exception = new Exception("not empty");
+        var footprint = new JsonDetails(
+            exception,
+            new BasicFootprint(exception)
+        );
         Assert.True(
             JToken.DeepEquals(
                 new JObject
@@ -41,8 +51,11 @@ public class JsonFootprintTest
     [Fact]
     public void JsonFootprint_ShouldBeValidJSON_InnerException()
     {
-        var footprint = new JsonFootprint(
-            new Exception("not empty", new ArgumentException("argument wrong")));
+        var exception = new Exception("not empty", new ArgumentException("argument wrong"));
+        var footprint = new JsonDetails(
+            exception,
+            new BasicFootprint(exception)
+        );
         Assert.True(
             JToken.DeepEquals(
                 new JObject
