@@ -29,12 +29,7 @@ app.MapControllers();
 
 app.Use(async (context, next) =>
 {
-    await new BoBo.ASPNETCore.Middleware.BoBo(
-        next,
-        new JsonFootprint(
-            new DummyException()
-        )
-    ).InvokeAsync(context);
+    await new BoBo.ASPNETCore.Middleware.BoBo(next, new JsonFootprint()).InvokeAsync(context);
 });
 
 app.Run();

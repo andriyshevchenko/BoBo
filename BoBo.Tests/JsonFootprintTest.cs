@@ -9,10 +9,9 @@ public class JsonFootprintTest
     [Fact]
     public void JsonFootprint_ShouldReturnOutput()
     {
-        var exception = new Exception("not empty");
         var footprint = new JsonDetails(
-            exception,
-            new BasicFootprint(exception)
+            new Exception("not empty"),
+            new BasicFootprint()
         );
         Assert.NotNull(footprint.MakeFootprint().ToString());
     }
@@ -20,10 +19,9 @@ public class JsonFootprintTest
     [Fact]
     public void JsonFootprint_ShouldNotReturnEmptyString()
     {
-        var exception = new Exception("not empty");
         var footprint = new JsonDetails(
-            exception,
-            new BasicFootprint(exception)
+            new Exception("not empty"),
+            new BasicFootprint()
         );
         Assert.NotEmpty(footprint.MakeFootprint().ToString());
     }
@@ -31,10 +29,9 @@ public class JsonFootprintTest
     [Fact]
     public void JsonFootprint_ShouldBeValidJSON_NoInnerException()
     {
-        var exception = new Exception("not empty");
         var footprint = new JsonDetails(
-            exception,
-            new BasicFootprint(exception)
+            new Exception("not empty"),
+            new BasicFootprint()
         );
         Assert.True(
             JToken.DeepEquals(
@@ -51,10 +48,9 @@ public class JsonFootprintTest
     [Fact]
     public void JsonFootprint_ShouldBeValidJSON_InnerException()
     {
-        var exception = new Exception("not empty", new ArgumentException("argument wrong"));
         var footprint = new JsonDetails(
-            exception,
-            new BasicFootprint(exception)
+            new Exception("not empty", new ArgumentException("argument wrong")),
+            new BasicFootprint()
         );
         Assert.True(
             JToken.DeepEquals(

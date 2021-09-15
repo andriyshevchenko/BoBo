@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using BoBo.Fakes;
+using Newtonsoft.Json.Linq;
 using System.Diagnostics;
 using System.Text;
 
@@ -11,6 +12,10 @@ namespace BoBo.Formatting;
 public class BasicFootprint : IFootprint
 {
     private readonly Exception exception;
+
+    public BasicFootprint() : this(new DummyException())
+    {
+    }
 
     public BasicFootprint(Exception exception)
     {
