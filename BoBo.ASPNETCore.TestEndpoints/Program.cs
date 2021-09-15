@@ -27,9 +27,6 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.Use(async (context, next) =>
-{
-    await new BoBo.ASPNETCore.Middleware.BoBo(next, new JsonFootprint()).InvokeAsync(context);
-});
+app.UseMiddleware(typeof(BoBo.ASPNETCore.Middleware.BoBo), new JsonFootprint());
 
 app.Run();
