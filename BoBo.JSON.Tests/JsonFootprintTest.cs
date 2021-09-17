@@ -1,38 +1,29 @@
-﻿using BoBo.Formatting;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using Xunit;
 
-namespace BoBo.Tests;
+namespace BoBo.JSON.Tests;
 
 public class JsonFootprintTest
 {
     [Fact]
     public void JsonFootprint_ShouldReturnOutput()
     {
-        var footprint = new JsonDetails(
-            new Exception("not empty"),
-            new BasicFootprint()
-        );
-        Assert.NotNull(footprint.MakeFootprint().ToString());
+        var footprint = new RecursiveDump(new BasicDump());
+        Assert.NotNull(footprint.MakeFootprint(new Exception("not empty")).ToString());
     }
-    
+
     [Fact]
     public void JsonFootprint_ShouldNotReturnEmptyString()
     {
-        var footprint = new JsonDetails(
-            new Exception("not empty"),
-            new BasicFootprint()
-        );
-        Assert.NotEmpty(footprint.MakeFootprint().ToString());
+        var footprint = new RecursiveDump(new BasicDump());
+        Assert.NotEmpty(footprint.MakeFootprint(new Exception("not empty")).ToString());
     }
-    
+
     [Fact]
     public void JsonFootprint_ShouldBeValidJSON_NoInnerException()
     {
-        var footprint = new JsonDetails(
-            new Exception("not empty"),
-            new BasicFootprint()
-        );
+        var footprint = new RecursiveDump(new BasicDump());
         Assert.True(
             JToken.DeepEquals(
                 new JObject
@@ -40,7 +31,7 @@ public class JsonFootprintTest
                     { "Message", "not empty" },
                     { "Footprint", "" }
                 },
-                footprint.MakeFootprint()
+                footprint.MakeFootprint(new Exception("not empty"))
             )
         );
     }
@@ -48,10 +39,7 @@ public class JsonFootprintTest
     [Fact]
     public void JsonFootprint_ShouldBeValidJSON_InnerException()
     {
-        var footprint = new JsonDetails(
-            new Exception("not empty", new ArgumentException("argument wrong")),
-            new BasicFootprint()
-        );
+        var footprint = new RecursiveDump(new BasicDump());
         Assert.True(
             JToken.DeepEquals(
                 new JObject
@@ -65,7 +53,7 @@ public class JsonFootprintTest
                         }
                     }
                 },
-                footprint.MakeFootprint()
+                footprint.MakeFootprint(new Exception("not empty", new ArgumentException("argument wrong")))
             )
         );
     }

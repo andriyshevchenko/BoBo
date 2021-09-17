@@ -1,6 +1,4 @@
-﻿using BoBo.Decorating;
-using BoBo.Formatting;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using System.Text;
 
 namespace BoBo.ASPNETCore.Middleware
@@ -24,17 +22,11 @@ namespace BoBo.ASPNETCore.Middleware
             }
             catch (Exception exception)
             {
-                string body = 
-                    new TextOf(
-                        new JsonDetails(
-                        exception,
-                        footprint
-                    )
-                ).Text();
+                string body = new TextOf(footprint, exception).Text();
                 httpContext.Response.ContentLength = Encoding.UTF8.GetByteCount(body);
                 httpContext.Response.ContentType = "application/json";
                 httpContext.Response.StatusCode = 500;
-                await httpContext.Response.WriteAsync(body);  
+                await httpContext.Response.Body.  
             }
         }
     }

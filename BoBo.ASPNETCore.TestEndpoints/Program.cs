@@ -1,6 +1,3 @@
-using BoBo.Fakes;
-using BoBo.Formatting;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -27,6 +24,6 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.UseMiddleware(typeof(BoBo.ASPNETCore.Middleware.BoBo), new JsonFootprint());
+app.UseMiddleware(typeof(BoBo.ASPNETCore.Middleware.BoBo), new JsonFootprint(new JsonBody()));
 
 app.Run();

@@ -1,8 +1,7 @@
-﻿using BoBo.Fakes;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
 using System.Diagnostics;
 
-namespace BoBo.Formatting;
+namespace BoBo.JSON;
 
 /// <summary>
 /// Gets the entire stack trace consisting of exception's footprints (File, Method, LineNumber)
@@ -16,25 +15,9 @@ namespace BoBo.Formatting;
 ///     }
 /// ]
 /// </summary>
-public class JsonFootprint : IFootprint
+public class JsonDump : IFootprint
 {
-    private readonly Exception exception;
-
-    public JsonFootprint() : this(new DummyException())
-    {
-    }
-
-    public JsonFootprint(Exception exception)
-    {
-        this.exception = exception;
-    }
-
-    public IFootprint MakeCopy(Exception exception)
-    {
-        return new JsonFootprint(exception);
-    }
-
-    public JToken MakeFootprint()
+    public JToken MakeFootprint(Exception exception)
     {
         var footprint = new JArray();
         var frames = new StackTrace(exception, true).GetFrames();

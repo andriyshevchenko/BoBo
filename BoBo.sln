@@ -5,11 +5,15 @@ VisualStudioVersion = 17.0.31612.314
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoBo", "BoBo\BoBo.csproj", "{4D50CF8E-7B53-4915-A3FD-D37012C75D9A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoBo.Tests", "BoBo.Tests\BoBo.Tests.csproj", "{BA205551-4D2D-4F82-B459-2BD675441391}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoBo.JSON.Tests", "BoBo.JSON.Tests\BoBo.JSON.Tests.csproj", "{BA205551-4D2D-4F82-B459-2BD675441391}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoBo.ASPNETCore", "BoBo.ASPNETCore\BoBo.ASPNETCore.csproj", "{49F819D1-9CC0-4C0D-9A54-AD7B209EF5B1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoBo.ASPNETCore", "BoBo.ASPNETCore\BoBo.ASPNETCore.csproj", "{49F819D1-9CC0-4C0D-9A54-AD7B209EF5B1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoBo.ASPNETCore.TestEndpoints", "BoBo.ASPNETCore.TestEndpoints\BoBo.ASPNETCore.TestEndpoints.csproj", "{52B43124-52F7-48F3-B4CA-5FC6D397BB1F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoBo.ASPNETCore.TestEndpoints", "BoBo.ASPNETCore.TestEndpoints\BoBo.ASPNETCore.TestEndpoints.csproj", "{52B43124-52F7-48F3-B4CA-5FC6D397BB1F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoBo.JSON", "BoBo.JSON\BoBo.JSON.csproj", "{8EC9FA56-9399-46D4-B0DF-7CCF5D1F5DF8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoBo.XML", "BoBo.XML\BoBo.XML.csproj", "{311C2E7A-E040-4EB8-BF22-69FFD3D0845E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +37,14 @@ Global
 		{52B43124-52F7-48F3-B4CA-5FC6D397BB1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{52B43124-52F7-48F3-B4CA-5FC6D397BB1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{52B43124-52F7-48F3-B4CA-5FC6D397BB1F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8EC9FA56-9399-46D4-B0DF-7CCF5D1F5DF8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EC9FA56-9399-46D4-B0DF-7CCF5D1F5DF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EC9FA56-9399-46D4-B0DF-7CCF5D1F5DF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EC9FA56-9399-46D4-B0DF-7CCF5D1F5DF8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{311C2E7A-E040-4EB8-BF22-69FFD3D0845E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{311C2E7A-E040-4EB8-BF22-69FFD3D0845E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{311C2E7A-E040-4EB8-BF22-69FFD3D0845E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{311C2E7A-E040-4EB8-BF22-69FFD3D0845E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

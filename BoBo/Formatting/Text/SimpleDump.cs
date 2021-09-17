@@ -1,33 +1,19 @@
-﻿using BoBo.Fakes;
-using Newtonsoft.Json.Linq;
+﻿using System;
 using System.Diagnostics;
 using System.Text;
 
-namespace BoBo.Formatting;
+namespace BoBo.Formatting.Text;
 
-/// <summary>
-/// Gets the entire stack trace consisting of exception's footprints (File, Method, LineNumber)
-/// in a basic line-by-line format
-/// </summary>
-public class BasicFootprint : IFootprint
+public class SimpleDump
 {
     private readonly Exception exception;
 
-    public BasicFootprint() : this(new DummyException())
-    {
-    }
-
-    public BasicFootprint(Exception exception)
+    public SimpleDump(Exception exception)
     {
         this.exception = exception;
     }
 
-    public IFootprint MakeCopy(Exception exception)
-    {
-        return new BasicFootprint(exception);
-    }
-
-    public JToken MakeFootprint()
+    public override string ToString()
     {
         var frames = new StackTrace(exception, true).GetFrames();
         var traceStringBuilder = new StringBuilder();
@@ -41,6 +27,6 @@ public class BasicFootprint : IFootprint
                 traceStringBuilder.AppendLine(" ---> ");
             }
         }
-        return new JValue(traceStringBuilder.ToString());
+        return traceStringBuilder.ToString();
     }
 }

@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BoBo\BoBo.csproj" />
+    <ProjectReference Include="..\BoBo.JSON\BoBo.JSON.csproj" />
   </ItemGroup>
 
 </Project>
