@@ -9,14 +9,14 @@ namespace BoBo.ASPNETCore.Middleware;
 /// <summary>
 /// Bridge between ASP.NET framework and "elegant objects"
 /// </summary>
-public class BoBo
+public class Catch
 {
     private readonly RequestDelegate next;
     private readonly HttpStatusCode code;
     private readonly IHeaders headers;
     private readonly IDigest digest;
 
-    public BoBo(RequestDelegate next, HttpStatusCode code, IHeaders headers, IDigest digest)
+    public Catch(RequestDelegate next, HttpStatusCode code, IHeaders headers, IDigest digest)
     {
         this.next = next;
         this.code = code;

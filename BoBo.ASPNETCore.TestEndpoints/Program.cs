@@ -32,7 +32,7 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.UseMiddleware(typeof(BoBo.ASPNETCore.Middleware.BoBo),
+app.UseMiddleware(typeof(BoBo.ASPNETCore.Middleware.Catch),
     System.Net.HttpStatusCode.InternalServerError,
     new WithContentType("text/xml"),
     new XmlDigest(
