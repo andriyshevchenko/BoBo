@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using BoBo.Formatting.JSON;
+using Newtonsoft.Json.Linq;
 using System;
 using Xunit;
 

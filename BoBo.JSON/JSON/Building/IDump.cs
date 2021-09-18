@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
 
-namespace BoBo.JSON;
+namespace BoBo.Formatting.JSON;
 
 public interface IDump
 {

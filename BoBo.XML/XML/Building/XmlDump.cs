@@ -21,7 +21,8 @@ public class XmlDump : IDump
     public XmlNode MakeDump(Exception exception, XmlDocument document)
     {
         var root = document.CreateElement(elementNamePlural);
-        foreach (var frame in new StackTrace(exception, true).GetFrames() ?? Array.Empty<StackFrame>())
+        StackFrame[] frames = new StackTrace(exception, true).GetFrames() ?? Array.Empty<StackFrame>();
+        foreach (var frame in frames.Reverse())
         {
             if (frame.GetFileLineNumber() > 0)
             {

@@ -1,7 +1,7 @@
 ﻿using BoBo.Formatting.Enumerable;
 using Newtonsoft.Json.Linq;
 
-namespace BoBo.JSON;
+namespace BoBo.Formatting.JSON;
 
 public class RecursiveDump : IDump
 {

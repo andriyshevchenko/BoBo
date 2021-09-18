@@ -24,7 +24,7 @@ public class SimpleDump
                 traceStringBuilder.AppendLine($"File: {frame.GetFileName()}");
                 traceStringBuilder.AppendLine($"Method: {frame.GetMethod().Name}");
                 traceStringBuilder.AppendLine($"LineNumber: {frame.GetFileLineNumber()}");
-                traceStringBuilder.AppendLine(" ---> ");
+                traceStringBuilder.AppendLine("---------->");
             }
         }
         return traceStringBuilder.ToString();

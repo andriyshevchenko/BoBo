@@ -1,7 +1,7 @@
 ﻿using BoBo.Formatting.Text;
 using Newtonsoft.Json.Linq;
 
-namespace BoBo.JSON;
+namespace BoBo.Formatting.JSON;
 
 /// <summary>
 /// Gets the entire stack trace consisting of exception's footprints (File, Method, LineNumber)

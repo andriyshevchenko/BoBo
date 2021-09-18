@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
 using System.Diagnostics;
 
-namespace BoBo.JSON;
+namespace BoBo.Formatting.JSON;
 
 /// <summary>
 /// Gets the entire stack trace consisting of exception's footprints (File, Method, LineNumber)
@@ -20,8 +20,8 @@ public class JsonDump : IDump
     public JToken MakeDump(Exception exception)
     {
         var footprint = new JArray();
-        var frames = new StackTrace(exception, true).GetFrames();
-        foreach (var frame in frames ?? Array.Empty<StackFrame>())
+        StackFrame[] frames = new StackTrace(exception, true).GetFrames() ?? Array.Empty<StackFrame>();
+        foreach (var frame in frames.Reverse())
         {
             if (frame.GetFileLineNumber() > 0)
             {

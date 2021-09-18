@@ -1,6 +1,6 @@
 using BoBo.ASPNETCore.Middleware;
+using BoBo.Formatting.JSON;
 using BoBo.Formatting.XML;
-using BoBo.JSON;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -32,12 +32,12 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.UseMiddleware(typeof(BoBo.ASPNETCore.Middleware.Catch),
+app.UseMiddleware(typeof(Catch),    
     System.Net.HttpStatusCode.InternalServerError,
     new WithContentType("text/xml"),
     new XmlDigest(
         new BoBo.Formatting.XML.RecursiveDump(
-            new XmlDump()
+            new BoBo.Formatting.XML.XmlDump()
         )
     )
 );

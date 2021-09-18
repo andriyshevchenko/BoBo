@@ -1,7 +1,8 @@
 ﻿using BoBo.Formatting;
+using BoBo.Formatting.JSON;
 using System.Text;
 
-namespace BoBo.JSON;
+namespace BoBo.Formatting.JSON;
 
 public class JsonDigest : IDigest
 {
