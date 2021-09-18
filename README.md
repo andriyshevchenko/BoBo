@@ -3,11 +3,20 @@ Readable stack trace embedded into ASP.NET app
 ## Features
 - JSON output
 - XML output
+- Nuget package
+- Documentation
 
 ## Where it may be useful
 - quick-checking internal server error cause during full-stack development
 - displaying internal server errors on client application
 - storing exception data in some 3rd party storage/API
+
+## Contributing
+- pull requests are welcome!
+- issues are welcome!
+- feature requests are especially welcome!
+- contact me via [Telegram](https://t.me/e86356bc3414991aabee873f5) or [Email](mailto:shewchenkoandriy@gmail.com)
+ if you want to use it in your app and lacking some features 
 
 ## Code examples
 
@@ -99,3 +108,4 @@ app.UseMiddleware(typeof(Catch),
   "Message": "wow"
 }
 ```
+
