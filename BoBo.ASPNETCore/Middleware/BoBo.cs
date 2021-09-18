@@ -1,33 +1,43 @@
-﻿using Microsoft.AspNetCore.Http;
-using System.Text;
+﻿using BoBo.Formatting;
+using Microsoft.AspNetCore.Http;
+using System;
+using System.Net;
+using System.Threading.Tasks;
 
-namespace BoBo.ASPNETCore.Middleware
+namespace BoBo.ASPNETCore.Middleware;
+
+/// <summary>
+/// Bridge between ASP.NET framework and "elegant objects"
+/// </summary>
+public class BoBo
 {
-    public class BoBo
+    private readonly RequestDelegate next;
+    private readonly HttpStatusCode code;
+    private readonly IHeaders headers;
+    private readonly IDigest digest;
+
+    public BoBo(RequestDelegate next, HttpStatusCode code, IHeaders headers, IDigest digest)
     {
-        private readonly RequestDelegate next;
-        private readonly IFootprint footprint;
+        this.next = next;
+        this.code = code;
+        this.headers = headers;
+        this.digest = digest;
+    }
 
-        public BoBo(RequestDelegate next, IFootprint footprint)
+    public async Task InvokeAsync(HttpContext httpContext)
+    {
+        try
         {
-            this.next = next;
-            this.footprint = footprint;
+            await next(httpContext);
         }
-
-        public async Task InvokeAsync(HttpContext httpContext)
+        catch (Exception exception)
         {
-            try
+            httpContext.Response.StatusCode = (int)code;
+            foreach (var item in headers.Make())
             {
-                await next(httpContext);
+                httpContext.Response.Headers.Add(item.Key, item.Value);
             }
-            catch (Exception exception)
-            {
-                string body = new TextOf(footprint, exception).Text();
-                httpContext.Response.ContentLength = Encoding.UTF8.GetByteCount(body);
-                httpContext.Response.ContentType = "application/json";
-                httpContext.Response.StatusCode = 500;
-                await httpContext.Response.Body.  
-            }
+            await digest.Write(exception, httpContext.Response.Body);
         }
     }
 }

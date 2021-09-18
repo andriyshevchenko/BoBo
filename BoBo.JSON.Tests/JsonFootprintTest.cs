@@ -10,14 +10,14 @@ public class JsonFootprintTest
     public void JsonFootprint_ShouldReturnOutput()
     {
         var footprint = new RecursiveDump(new BasicDump());
-        Assert.NotNull(footprint.MakeFootprint(new Exception("not empty")).ToString());
+        Assert.NotNull(footprint.MakeDump(new Exception("not empty")).ToString());
     }
 
     [Fact]
     public void JsonFootprint_ShouldNotReturnEmptyString()
     {
         var footprint = new RecursiveDump(new BasicDump());
-        Assert.NotEmpty(footprint.MakeFootprint(new Exception("not empty")).ToString());
+        Assert.NotEmpty(footprint.MakeDump(new Exception("not empty")).ToString());
     }
 
     [Fact]
@@ -31,7 +31,7 @@ public class JsonFootprintTest
                     { "Message", "not empty" },
                     { "Footprint", "" }
                 },
-                footprint.MakeFootprint(new Exception("not empty"))
+                footprint.MakeDump(new Exception("not empty"))
             )
         );
     }
@@ -53,7 +53,7 @@ public class JsonFootprintTest
                         }
                     }
                 },
-                footprint.MakeFootprint(new Exception("not empty", new ArgumentException("argument wrong")))
+                footprint.MakeDump(new Exception("not empty", new ArgumentException("argument wrong")))
             )
         );
     }

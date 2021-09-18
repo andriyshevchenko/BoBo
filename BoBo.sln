@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoBo.ASPNETCore.TestEndpoin
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoBo.JSON", "BoBo.JSON\BoBo.JSON.csproj", "{8EC9FA56-9399-46D4-B0DF-7CCF5D1F5DF8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoBo.XML", "BoBo.XML\BoBo.XML.csproj", "{311C2E7A-E040-4EB8-BF22-69FFD3D0845E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoBo.XML", "BoBo.XML\BoBo.XML.csproj", "{311C2E7A-E040-4EB8-BF22-69FFD3D0845E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoBo.XML.Tests", "BoBo.XML.Tests\BoBo.XML.Tests.csproj", "{87E2CFD3-C78D-4C5D-96BB-9D3FE1A26CE0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{311C2E7A-E040-4EB8-BF22-69FFD3D0845E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{311C2E7A-E040-4EB8-BF22-69FFD3D0845E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{311C2E7A-E040-4EB8-BF22-69FFD3D0845E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87E2CFD3-C78D-4C5D-96BB-9D3FE1A26CE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87E2CFD3-C78D-4C5D-96BB-9D3FE1A26CE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87E2CFD3-C78D-4C5D-96BB-9D3FE1A26CE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87E2CFD3-C78D-4C5D-96BB-9D3FE1A26CE0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

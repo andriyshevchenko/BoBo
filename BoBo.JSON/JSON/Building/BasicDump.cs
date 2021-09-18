@@ -7,10 +7,10 @@ namespace BoBo.JSON;
 /// Gets the entire stack trace consisting of exception's footprints (File, Method, LineNumber)
 /// in a basic line-by-line format
 /// </summary>
-public class BasicDump : IFootprint
+public class BasicDump : IDump
 {
-    public JToken MakeFootprint(Exception exception)
+    public JToken MakeDump(Exception exception)
     {
-        return new JValue($"{new SimpleDump(exception)}");
+        return new JValue(new SimpleDump(exception).ToString());
     }
 }

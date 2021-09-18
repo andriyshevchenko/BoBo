@@ -15,9 +15,9 @@ namespace BoBo.JSON;
 ///     }
 /// ]
 /// </summary>
-public class JsonDump : IFootprint
+public class JsonDump : IDump
 {
-    public JToken MakeFootprint(Exception exception)
+    public JToken MakeDump(Exception exception)
     {
         var footprint = new JArray();
         var frames = new StackTrace(exception, true).GetFrames();

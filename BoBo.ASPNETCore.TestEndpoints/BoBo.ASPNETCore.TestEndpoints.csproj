@@ -11,6 +11,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BoBo.ASPNETCore\BoBo.ASPNETCore.csproj" />
+    <ProjectReference Include="..\BoBo.JSON\BoBo.JSON.csproj" />
+    <ProjectReference Include="..\BoBo.XML\BoBo.XML.csproj" />
   </ItemGroup>
 
 </Project>

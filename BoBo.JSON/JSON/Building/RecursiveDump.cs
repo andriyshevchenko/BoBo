@@ -1,31 +1,30 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using BoBo.Formatting.Enumerable;
+using Newtonsoft.Json.Linq;
 
 namespace BoBo.JSON;
 
-public class RecursiveDump : IFootprint
+public class RecursiveDump : IDump
 {
-    private readonly IFootprint body;
+    private readonly IDump algorithm;
 
-    public RecursiveDump(IFootprint body)
+    public RecursiveDump(IDump algorithm)
     {
-        this.body = body;
+        this.algorithm = algorithm;
     }
 
-    public JToken MakeFootprint(Exception exception)
+    public JToken MakeDump(Exception exception)
     {
         JObject root = new()
         {
-            { "Footprint", body.MakeFootprint(exception) },
+            { "Footprint", algorithm.MakeDump(exception) },
             { "Message", exception.Message },
         };
         JObject currentRoot = root;
-        Exception current = exception;
-        while (current.InnerException != null)
+        foreach (var current in new InnerExceptionsOf(exception))
         {
-            current = current.InnerException;
             JObject innerException = new()
             {
-                { "Footprint", body.MakeFootprint(exception) },
+                { "Footprint", algorithm.MakeDump(exception) },
                 { "Message", current.Message }
             };
             currentRoot.Add("InnerException", innerException);

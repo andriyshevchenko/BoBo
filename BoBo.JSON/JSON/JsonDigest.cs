@@ -5,18 +5,16 @@ namespace BoBo.JSON;
 
 public class JsonDigest : IDigest
 {
-    private readonly Exception exception;
-    private readonly IFootprint algorithm;
+    private readonly IDump algorithm;
 
-    public JsonDigest(Exception exception, IFootprint algorithm)
+    public JsonDigest(IDump algorithm)
     {
-        this.exception = exception;
         this.algorithm = algorithm;
     }
 
-    public async Task WriteTo(Stream stream)
+    public async Task Write(Exception exception, Stream stream)
     {
-        var jToken = algorithm.MakeFootprint(exception);
+        var jToken = algorithm.MakeDump(exception);
         var text = jToken.ToString();
         var bytes = Encoding.UTF8.GetBytes(text);
         await stream.WriteAsync(bytes, CancellationToken.None);

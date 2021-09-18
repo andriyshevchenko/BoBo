@@ -1,3 +1,11 @@
+using BoBo.ASPNETCore.Middleware;
+using BoBo.Formatting.XML;
+using BoBo.JSON;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using System.Xml;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -24,6 +32,14 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.UseMiddleware(typeof(BoBo.ASPNETCore.Middleware.BoBo), new JsonFootprint(new JsonBody()));
+app.UseMiddleware(typeof(BoBo.ASPNETCore.Middleware.BoBo),
+    System.Net.HttpStatusCode.InternalServerError,
+    new WithContentType("text/xml"),
+    new XmlDigest(
+        new BoBo.Formatting.XML.RecursiveDump(
+            new XmlDump()
+        )
+    )
+);
 
 app.Run();
