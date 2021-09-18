@@ -20,7 +20,7 @@ Readable stack trace embedded into ASP.NET app
 
 ## Code examples
 
-### Catch an exception and build XML response with `500` status code:
+#### Catch an exception and build XML response with `500` status code:
 ```csharp
 app.UseMiddleware(typeof(Catch),
     System.Net.HttpStatusCode.InternalServerError,
@@ -51,7 +51,7 @@ app.UseMiddleware(typeof(Catch),
 </Exception>
 ```
 
-### Catch an exception and build detailed JSON response with `500` status code
+#### Catch an exception and build detailed JSON response with `500` status code
 
 ```csharp
 app.UseMiddleware(typeof(Catch),
@@ -82,7 +82,7 @@ app.UseMiddleware(typeof(Catch),
   "Message": "wow"
 }
 ```
-### Catch an exception and build simple JSON response with `500` status code:
+#### Catch an exception and build simple JSON response with `500` status code:
 
 ```csharp
 app.UseMiddleware(typeof(Catch),
