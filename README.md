@@ -14,8 +14,8 @@ Readable stack trace embedded into ASP.NET app
 ## Contributing
 - pull requests are welcome!
 - issues are welcome!
-- feature requests are especially welcome!<br/>
-  contact me via [Telegram](https://t.me/e86356bc3414991aabee873f5) or [Email](mailto:shewchenkoandriy@gmail.com)
+- feature requests are especially welcome!
+- contact me via [Telegram](https://t.me/e86356bc3414991aabee873f5) or [Email](mailto:shewchenkoandriy@gmail.com)
 
 ## Code examples
 
