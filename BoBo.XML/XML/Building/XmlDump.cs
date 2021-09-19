@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using BoBo.Enumerable;
+using System.Diagnostics;
 using System.Xml;
 
 namespace BoBo.Formatting.XML;
@@ -21,8 +22,7 @@ public class XmlDump : IDump
     public XmlNode MakeDump(Exception exception, XmlDocument document)
     {
         var root = document.CreateElement(elementNamePlural);
-        StackFrame[] frames = new StackTrace(exception, true).GetFrames() ?? Array.Empty<StackFrame>();
-        foreach (var frame in frames.Reverse())
+        foreach (var frame in new FramesOf(exception))
         {
             if (frame.GetFileLineNumber() > 0)
             {

@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using BoBo.Enumerable;
+using Newtonsoft.Json.Linq;
 using System.Diagnostics;
 
 namespace BoBo.Formatting.JSON;
@@ -20,8 +21,7 @@ public class JsonDump : IDump
     public JToken MakeDump(Exception exception)
     {
         var footprint = new JArray();
-        StackFrame[] frames = new StackTrace(exception, true).GetFrames() ?? Array.Empty<StackFrame>();
-        foreach (var frame in frames.Reverse())
+        foreach (var frame in new FramesOf(exception))
         {
             if (frame.GetFileLineNumber() > 0)
             {

@@ -1,4 +1,5 @@
 ﻿using BoBo.Formatting.Enumerable;
+using BoBo.Formatting.Text;
 using System.Xml;
 
 namespace BoBo.Formatting.XML;
@@ -26,6 +27,9 @@ public class RecursiveDump : IDump
         root.AppendChild(message);
         var footprint = algorithm.MakeDump(exception, document);
         root.AppendChild(footprint);
+        var timestamp = document.CreateElement("Timestamp");
+        timestamp.InnerText = new Ticks().ToString();
+        root.AppendChild(timestamp);
         XmlNode currentRoot = root;
         foreach (var current in new InnerExceptionsOf(exception))
         {

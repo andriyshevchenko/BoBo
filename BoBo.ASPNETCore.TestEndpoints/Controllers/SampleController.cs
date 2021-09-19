@@ -11,6 +11,6 @@ public class SampleController : ControllerBase
     [HttpGet]
     public IEnumerable<object> Get()
     {
-        throw new InvalidTimeZoneException("wow");
+        throw new InvalidTimeZoneException("wow", new ArgumentOutOfRangeException("such fun"));
     }
 }
