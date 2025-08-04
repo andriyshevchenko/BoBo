@@ -1,6 +1,6 @@
 # BoBo
 
-[![CI](https://github.com/OWNER/BoBo/actions/workflows/dotnet.yml/badge.svg)](https://github.com/OWNER/BoBo/actions/workflows/dotnet.yml)
+[![CI](https://github.com/andriyshevchenko/BoBo/actions/workflows/dotnet.yml/badge.svg)](https://github.com/OWNER/BoBo/actions/workflows/dotnet.yml)
 
 Readable stack trace embedded into ASP.NET apps.
 
