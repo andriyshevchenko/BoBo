@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 
 namespace BoBo.Enumerable;
 
@@ -17,16 +16,17 @@ public class FramesOf : IEnumerable<StackFrame>
 
     public IEnumerator<StackFrame> GetEnumerator()
     {
-        StackFrame[] frames =
-            new StackTrace(exception, true).GetFrames() ?? Array.Empty<StackFrame>();
-        return frames
-            .AsEnumerable()
-            .Reverse()
-            .GetEnumerator();
+        var frames = new StackTrace(exception, true).GetFrames();
+        if (frames == null)
+        {
+            yield break;
+        }
+
+        for (int i = frames.Length - 1; i >= 0; i--)
+        {
+            yield return frames[i];
+        }
     }
 
-    IEnumerator IEnumerable.GetEnumerator()
-    {
-        return GetEnumerator();
-    }
+    IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 }

@@ -27,9 +27,10 @@ public class XmlDump : IDump
             if (frame.GetFileLineNumber() > 0)
             {
                 var current = document.CreateElement(elementName);
+                var methodName = frame.GetMethod()?.Name ?? string.Empty;
                 current.InnerXml =
                     $"<File>{frame.GetFileName()}</File>" +
-                    $"<Method>{frame.GetMethod().Name}</Method>" +
+                    $"<Method>{methodName}</Method>" +
                     $"<LineNumber>{frame.GetFileLineNumber()}</LineNumber>";
                 root.AppendChild(current);
             }

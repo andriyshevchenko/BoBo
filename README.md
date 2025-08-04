@@ -1,25 +1,40 @@
 # BoBo
-Readable stack trace embedded into ASP.NET app
+
+[![CI](https://github.com/andriyshevchenko/BoBo/actions/workflows/dotnet.yml/badge.svg)](https://github.com/OWNER/BoBo/actions/workflows/dotnet.yml)
+
+Readable stack trace embedded into ASP.NET apps.
+
 ## Features
+
 - JSON output
 - XML output
-- Nuget package
+- NuGet package
 - Documentation
 
+## Installation
+
+```bash
+dotnet add package BoBo --version 1.0.0
+```
+
 ## Where it may be useful
+
 - quick-checking internal server error cause during full-stack development
 - displaying internal server errors on client application
 - storing exception data in some 3rd party storage/API
 
-## Contributing
-- pull requests are welcome!
-- issues are welcome!
-- feature requests are especially welcome!
-- contact me via [Telegram](https://t.me/e86356bc3414991aabee873f5) or [Email](mailto:shewchenkoandriy@gmail.com)
+## Build
 
-## Code examples
+Run tests to verify the library:
 
-#### Catch an exception and build XML response with `500` status code:
+```bash
+dotnet test
+```
+
+## Usage
+
+### XML
+
 ```csharp
 app.UseMiddleware(typeof(Catch),
     System.Net.HttpStatusCode.InternalServerError,
@@ -31,26 +46,8 @@ app.UseMiddleware(typeof(Catch),
     )
 );
 ```
-#### Generated XML
-```xml
-<Exception>
-  <Message>wow</Message>
-  <Dump>
-    <Frame>
-      <File>C:\projects\BoBo\BoBo.ASPNETCore.TestEndpoints\Controllers\SampleController.cs</File>
-      <Method>Get</Method>
-      <LineNumber>14</LineNumber>
-    </Frame>
-    <Frame>
-      <File>C:\projects\BoBo\BoBo.ASPNETCore\Middleware\Catch.cs</File>
-      <Method>MoveNext</Method>
-      <LineNumber>31</LineNumber>
-    </Frame>
-  </Dump>
-</Exception>
-```
 
-#### Catch an exception and build detailed JSON response with `500` status code
+### JSON
 
 ```csharp
 app.UseMiddleware(typeof(Catch),
@@ -63,48 +60,11 @@ app.UseMiddleware(typeof(Catch),
     )
 );
 ```
-#### Generated JSON
-```json
-{
-  "Footprint": [
-    {
-      "File": "C:\\projects\\BoBo\\BoBo.ASPNETCore.TestEndpoints\\Controllers\\SampleController.cs",
-      "Method": "Get",
-      "LineNumber": 14
-    },
-    {
-      "File": "C:\\projects\\BoBo\\BoBo.ASPNETCore\\Middleware\\Catch.cs",
-      "Method": "MoveNext",
-      "LineNumber": 31
-    }
-  ],
-  "Message": "wow"
-}
-```
-#### Catch an exception and build simple JSON response with `500` status code:
 
-```csharp
-app.UseMiddleware(typeof(Catch),
-    System.Net.HttpStatusCode.InternalServerError,
-    new WithContentType("application/json"),
-    new JsonDigest(
-        new BoBo.Formatting.JSON.RecursiveDump(
-            new BoBo.Formatting.JSON.BasicDump()
-        )
-    )
-);
-```
-#### Generated JSON
-```json
-{
-  "Footprint": "File: C:\\projects\\BoBo\\BoBo.ASPNETCore.TestEndpoints\\Controllers\\SampleController.cs
-                Method: Get
-                LineNumber: 14
-                ----------> 
-                File: C:\\projects\\BoBo\\BoBo.ASPNETCore\\Middleware\\Catch.cs
-                Method: MoveNext
-                LineNumber: 31",
-  "Message": "wow"
-}
-```
+## Contributing
+
+- pull requests are welcome!
+- issues are welcome!
+- feature requests are especially welcome!
+- contact me via [Telegram](https://t.me/e86356bc3414991aabee873f5) or [Email](mailto:shewchenkoandriy@gmail.com)
 
