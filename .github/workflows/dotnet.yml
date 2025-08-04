@@ -22,8 +22,12 @@ jobs:
         run: dotnet restore --configfile NuGet.config
       - name: Build
         run: dotnet build --no-restore
-      - name: Test
-        run: dotnet test --no-build --verbosity normal
+      - name: Test JSON
+        run: dotnet test BoBo.JSON.Tests/BoBo.JSON.Tests.csproj --no-build --verbosity normal
+      - name: Test XML
+        run: dotnet test BoBo.XML.Tests/BoBo.XML.Tests.csproj --no-build --verbosity normal
+      - name: Test ASP.NET Core end-to-end
+        run: dotnet test BoBo.ASPNETCore.Tests/BoBo.ASPNETCore.Tests.csproj --no-build --verbosity normal
 
   publish:
     needs: build
