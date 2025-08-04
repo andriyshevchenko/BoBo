@@ -1,4 +1,4 @@
-﻿using BoBo.Formatting.Enumerable;
+﻿using BoBo.Enumerable;
 using BoBo.Formatting.Text;
 using Newtonsoft.Json.Linq;
 
@@ -18,8 +18,7 @@ public class RecursiveDump : IDump
         JObject root = new()
         {
             { "Footprint", algorithm.MakeDump(exception) },
-            { "Message", exception.Message },
-            { "Timestamp", new Ticks().ToString() }
+            { "Message", exception.Message }
         };
         JObject currentRoot = root;
         foreach (var current in new InnerExceptionsOf(exception))
@@ -27,7 +26,7 @@ public class RecursiveDump : IDump
             JObject innerException = new()
             {
                 { "Footprint", algorithm.MakeDump(exception) },
-                { "Message", current.Message },
+                { "Message", current.Message }
             };
             currentRoot.Add("InnerException", innerException);
             currentRoot = innerException;
