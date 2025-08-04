@@ -32,7 +32,7 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.UseMiddleware(typeof(Catch),    
+app.UseMiddleware(typeof(Catch),
     System.Net.HttpStatusCode.InternalServerError,
     new WithContentType("text/xml"),
     new XmlDigest(
@@ -43,3 +43,8 @@ app.UseMiddleware(typeof(Catch),
 );
 
 app.Run();
+
+/// <summary>
+/// Exposes the entry point class for integration tests.
+/// </summary>
+public partial class Program { }
