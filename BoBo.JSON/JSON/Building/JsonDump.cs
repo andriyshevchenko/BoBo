@@ -25,11 +25,12 @@ public class JsonDump : IDump
         {
             if (frame.GetFileLineNumber() > 0)
             {
+                var methodName = frame.GetMethod()?.Name ?? string.Empty;
                 footprint.Add(
                     new JObject()
                     {
                         { "File", frame.GetFileName() },
-                        { "Method", frame.GetMethod().Name },
+                        { "Method", methodName },
                         { "LineNumber", frame.GetFileLineNumber() },
                     });
             }
